@@ -14,9 +14,25 @@ for programming knowledge — simply modify YAML files to generate your site.
 
 ## Getting Started
 
-### Installation
+### Installation & Usage
 
-To get started with Grimoire, clone the repository and install the required dependencies:
+To get started with Grimoire, you can directly install it using pip:
+
+```bash
+pip install grimoire-ssg
+```
+
+To generate your static site, run the Grimoire command with your input YAML files. 
+You can specify an output directory using the `-o` or `--output` flag.
+
+```bash
+python -m grimoire-ssg -o output_directory one_or_more_input_files.yml
+```
+
+### Alternative Installation
+
+Alternatively, you can clone the repository and install the 
+required dependencies with [Poetry](https://python-poetry.org/):
 
 ```bash
 git clone https://github.com/sigmasternchen/grimoire-ssg.git
@@ -24,12 +40,10 @@ cd grimoire-ssg
 poetry install
 ```
 
-### Usage
-
-To generate your static site, run the Grimoire command with your input YAML files. You can specify an output directory using the `-o` or `--output` flag.
+You can then run the program directly using Poetry:
 
 ```bash
-poetry run python -m grimoire-ssg -o output_directory input_file.yml
+poetry run python -m grimoire-ssg -o output_directory one_or_more_input_files.yml
 ```
 
 ### Example YAML File
