@@ -29,7 +29,7 @@ poetry install
 To generate your static site, run the Grimoire command with your input YAML files. You can specify an output directory using the `-o` or `--output` flag.
 
 ```bash
-poetry run python -m grimoire -o output_directory input_file.yml
+poetry run python -m grimoire-ssg -o output_directory input_file.yml
 ```
 
 ### Example YAML File
