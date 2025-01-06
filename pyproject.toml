@@ -1,8 +1,9 @@
 [tool.poetry]
-name = "grimoire"
+name = "grimoire-ssg"
 version = "0.1.0"
-description = ""
-authors = ["Your Name <you@example.com>"]
+description = "A minimalistic Static Site Generator"
+authors = ["Sigma <git@sigma-star.io>"]
+license = { file = "LICENSE" }
 readme = "README.md"
 
 [tool.poetry.dependencies]
