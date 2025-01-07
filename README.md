@@ -134,7 +134,7 @@ Contributions are welcome! If you have suggestions or improvements, feel free to
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the BSD-2-Clause License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
