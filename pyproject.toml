@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "grimoire-ssg"
 packages = [
-    { include = "grimoire-ssg" }
+    { include = "grimoiressg" }
 ]
 version = "0.1.0"
 description = "A minimalistic Static Site Generator"
