@@ -1,7 +1,7 @@
 import yaml
 from yaml import Loader
 
-from grimoiressg.modules import available_modules
+from grimoiressg.modules import available_modules, load_external_module
 
 
 def default_config():
@@ -21,8 +21,14 @@ def read_config(context):
         print("No config file given; using default config")
         config = default_config()
     else:
+        print("Loading config file...")
         with open(config_file, "r") as file:
             config = yaml.load(file, Loader) or {}
+
+    for module in config.get("load_modules", []):
+        print(f" Loading external module {module}")
+        load_external_module(module)
+    print()
 
     print("Enabled modules:")
     for module in config.get("enabled_modules", []):

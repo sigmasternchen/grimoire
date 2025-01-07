@@ -7,3 +7,7 @@ available_modules = {
     "markdown": compile_markdown,
     "templating": render_templates
 }
+
+
+def load_external_module(module):
+    __import__(module)
