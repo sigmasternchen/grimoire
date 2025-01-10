@@ -9,7 +9,7 @@ def parse_arguments_to_initial_context():
             The rest of the flags is used to customize the behavior.
         '''
     )
-    parser.add_argument("content_file", nargs='+', help="one or more content files")
+    parser.add_argument("content_file", nargs="+", help="one or more content files")
     parser.add_argument("-o", "--output", default="./output/", help="the output directory (default: ./output/)")
     parser.add_argument("-c", "--config", help="the config file to use")
 
