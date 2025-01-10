@@ -1,8 +1,8 @@
 import os
 
-from grimoiressg.utils import to_relative
-
 from jinja2 import Environment, FileSystemLoader
+
+from grimoiressg.utils import to_relative, logger
 
 jinja_env = Environment(
     loader=FileSystemLoader("/")
@@ -16,7 +16,7 @@ def render_templates(data, context):
         if "template" in entry:
             template_path = os.path.realpath(os.path.dirname(entry["filename"]) + "/" + entry["template"])
             template_dir = os.path.dirname(template_path)
-            print(f"Rendering template for {entry['relative_filename']}...")
+            logger.debug("Rendering template for %s...", entry['relative_filename'])
             template = jinja_env.get_template(template_path)
             entry["rendered"] = template.render(
                 **context,
@@ -28,9 +28,9 @@ def render_templates(data, context):
         if "rendered" in entry and "output" in entry:
             files_written += 1
             filename = os.path.realpath(context["output_dir"] + "/" + entry["output"])
-            print(f" writing to {to_relative(filename)}")
+            logger.debug(" writing to %s", to_relative(filename))
             os.makedirs(os.path.dirname(filename), exist_ok=True)
             with open(filename, "w") as file:
                 file.write(entry["rendered"])
 
-    print(f"{files_written} rendered")
+    logger.debug("%d rendered", files_written)

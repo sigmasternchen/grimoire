@@ -1,5 +1,7 @@
 import argparse
 
+from grimoiressg.utils import logger
+
 
 def parse_arguments_to_initial_context():
     parser = argparse.ArgumentParser(
@@ -21,11 +23,10 @@ def parse_arguments_to_initial_context():
         "filenames": args.content_file
     }
 
-    print(f"Output directory: {context['output_dir']}")
-    print(f"Config file: {context['config_file']}")
-    print("Content files:")
+    logger.debug("Output directory: %s", context['output_dir'])
+    logger.debug("Config file: %s", context['config_file'])
+    logger.debug("Content files:")
     for filename in context["filenames"]:
-        print(f" - {filename}")
-    print()
+        logger.debug(" - %s", filename)
 
     return context

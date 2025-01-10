@@ -3,11 +3,11 @@ import os
 import yaml
 from yaml import Loader
 
-from grimoiressg.utils.files import for_each_glob, to_relative
+from grimoiressg.utils import logger, for_each_glob, to_relative
 
 
 def handle_file(filename):
-    print(f" Reading {to_relative(filename)}...")
+    logger.debug(" Reading %s...", to_relative(filename))
 
     with open(filename, "r") as file:
         data = yaml.load(file, Loader)
@@ -28,12 +28,11 @@ def handle_file(filename):
 def recursively_read_files(context):
     data = []
 
-    print("Reading content files...")
+    logger.info("Reading content files...")
 
     for filename in context["filenames"]:
         data.extend(for_each_glob(filename, handle_file))
 
-    print(f"Read {len(data)} files in total.")
-    print()
+    logger.info(f"Read %d files in total.", len(data))
 
     return data

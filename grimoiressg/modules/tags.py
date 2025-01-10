@@ -1,3 +1,5 @@
+from grimoiressg.utils import logger
+
 
 def extract_tags(data, context):
     tags = {}
@@ -9,10 +11,10 @@ def extract_tags(data, context):
             tags[tag] = entry_list
 
     if tags:
-        print("Found tags:")
+        logger.debug("Found tags:")
         for tag in tags.keys():
-            print(f" - {tag} ({len(tags[tag])} files)")
+            logger.debug(" - %s (%d files)", tag, len(tags[tag]))
     else:
-        print("No tags found.")
+        logger.debug("No tags found.")
 
     context["tags"] = tags

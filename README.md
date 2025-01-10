@@ -143,10 +143,11 @@ that modifies the list of available modules:
 
 ```Python
 from grimoiressg.modules import available_modules
+from grimoiressg.utils import logger
 
 
 def test(data, context):
-    print("This is test module.")
+    logger.info("This is test module.")
 
 
 available_modules["test"] = test
