@@ -11,6 +11,7 @@ for programming knowledge — simply modify YAML files to generate your site.
 - **Markdown Support**: Write content in Markdown, which is automatically converted to HTML.
 - **Tagging System**: Organize your content with tags for easy referencing in templates.
 - **File Inclusion**: Include other YAML files to create a modular content structure.
+- **Plugin System**: Extend the functionality with modules that can be added at runtime. 
 
 ## Getting Started
 
@@ -26,7 +27,7 @@ To generate your static site, run the Grimoire command with your input YAML file
 You can specify an output directory using the `-o` or `--output` flag.
 
 ```bash
-python -m grimoire-ssg -o output_directory one_or_more_input_files.yml
+python -m grimoiressg -o output_directory one_or_more_input_files.yml
 ```
 
 ### Alternative Installation
@@ -43,7 +44,7 @@ poetry install
 You can then run the program directly using Poetry:
 
 ```bash
-poetry run python -m grimoire-ssg -o output_directory one_or_more_input_files.yml
+poetry run python -m grimoiressg -o output_directory one_or_more_input_files.yml
 ```
 
 ### Example YAML File
@@ -101,7 +102,11 @@ extends a layout and includes dynamic content:
     <h2>My latest blog articles:</h2>
     <ul>
     {% for entry in tags["blog"] %}
-        <li><a href="{{ entry.output }}">{{ entry.title }}</a> ({{ entry.date }})</li>
+        <li>
+            <a href="{{ entry.output }}">
+                {{ entry.title }}
+            </a> ({{ entry.date }})
+        </li>
     {% endfor %}
     </ul>
 {% endblock %}
@@ -126,7 +131,43 @@ Additionally, the following fields are defined:
 
 ### Output Structure
 
-The output files will be generated in the specified output directory, with paths defined in the `output` attribute of your YAML files.
+The output files will be generated in the specified output directory, with paths defined in the `output` 
+attribute of your YAML files.
+
+## Advanced Features
+
+### Custom Plugins
+
+The program supports the addition of custom plugins at runtime. To utilize this, create a Python module 
+that modifies the list of available modules:
+
+```Python
+from grimoiressg.modules import available_modules
+from grimoiressg.utils import logger
+
+
+def test(data, context):
+    logger.info("This is test module.")
+
+
+available_modules["test"] = test
+
+```
+
+You then need a config file that loads, and enables this module. Please note that you need to specify 
+all `enabled_modules` to be used - not just the additional one.
+
+```yaml
+load_modules:
+  - external_module_test
+
+enabled_modules:
+  - tags       # built-in module for tagging
+  - markdown   # built-in module for markdown support
+  - templating # built-in module for templating
+  - test       # our custom module; the name is the 
+               # key in the `available_modules` dict above
+```
 
 ## Contributing
 
@@ -134,7 +175,7 @@ Contributions are welcome! If you have suggestions or improvements, feel free to
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the BSD-2-Clause License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
