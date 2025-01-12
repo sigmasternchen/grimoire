@@ -34,7 +34,7 @@ def get_files_to_map(data, sitemap_config):
 
 def get_sitemap_file_suffix(sitemap_config):
     if sitemap_config["compression"]:
-        return ".yml.gz"
+        return ".xml.gz"
     else:
         return ".xml"
 
