@@ -1,7 +1,7 @@
 from grimoiressg.utils import logger
 
 
-def extract_tags(data, context):
+def extract_tags(data, context, config):
     tags = {}
 
     for entry in data:

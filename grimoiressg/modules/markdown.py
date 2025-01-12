@@ -3,7 +3,7 @@ import markdown
 from grimoiressg.utils import logger
 
 
-def compile_markdown(data, context):
+def compile_markdown(data, context, config):
     for entry in data:
         if "markdown" in entry:
             logger.debug("Compiling markdown for %s...", entry['relative_filename'])

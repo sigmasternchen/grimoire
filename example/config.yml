@@ -6,3 +6,4 @@ enabled_modules:
   - markdown
   - templating
   - test
+  - sitemaps
