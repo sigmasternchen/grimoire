@@ -25,6 +25,18 @@ def handle_file(filename):
     return results
 
 
+def deduplicate(candidates):
+    names = set()
+    results = []
+
+    for candidate in candidates:
+        if candidate["relative_filename"] not in names:
+            names.add(candidate["relative_filename"])
+            results.append(candidate)
+
+    return results
+
+
 def recursively_read_files(context):
     data = []
 
@@ -32,6 +44,8 @@ def recursively_read_files(context):
 
     for filename in context["filenames"]:
         data.extend(for_each_glob(filename, handle_file))
+
+    data = deduplicate(data)
 
     logger.info(f"Read %d files in total.", len(data))
 

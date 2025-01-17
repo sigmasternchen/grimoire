@@ -9,7 +9,7 @@ jinja_env = Environment(
 )
 
 
-def render_templates(data, context):
+def render_templates(data, context, config):
     files_written = 0
 
     for entry in data:

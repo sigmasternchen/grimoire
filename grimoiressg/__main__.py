@@ -10,7 +10,7 @@ from grimoiressg.utils import logger
 def apply_modules(data, config, context):
     for module in config.get("enabled_modules", []):
         logger.info("Applying module %s...", module)
-        available_modules[module](data, context)
+        available_modules[module](data, context, config)
 
 
 def main():
