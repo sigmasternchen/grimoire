@@ -9,6 +9,9 @@ authors = ["Sigma <git@sigma-star.io>"]
 license = "BSD-2-Clause"
 readme = "README.md"
 
+[tool.poetry.scripts]
+grimoiressg = "grimoiressg.scripts:main"
+
 [tool.poetry.dependencies]
 python = "^3.10"
 markdown = "^3.7"
