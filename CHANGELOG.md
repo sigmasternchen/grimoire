@@ -1,3 +1,9 @@
+## v1.1.1 (2025-01-18)
+
+### Fix
+
+- reversed it not a method
+
 ## v1.1.0 (2025-01-18)
 
 ### Feat
