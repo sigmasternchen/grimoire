@@ -1,3 +1,16 @@
+## v1.1.0 (2025-01-18)
+
+### Feat
+
+- Add exposed entrypoint for pipx
+- Add module for sitemaps
+
+### Fix
+
+- Reverse order in which entries are rendered
+- Wrong file extension for compressed sitemaps
+- Deduplicate content list before processing
+
 ## v1.0.0 (2025-01-12)
 
 ### Feat
