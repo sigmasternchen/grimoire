@@ -13,7 +13,7 @@ def render_templates(data, context, config):
     files_written = 0
 
     # render templates in reverse order, so included renderings can be used
-    for entry in data.reversed():
+    for entry in reversed(data.reversed):
         if "template" in entry:
             template_path = os.path.realpath(os.path.dirname(entry["filename"]) + "/" + entry["template"])
             template_dir = os.path.dirname(template_path)
